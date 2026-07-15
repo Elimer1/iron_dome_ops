@@ -1,4 +1,4 @@
-import { incidentRepo } from "../repositories/incidentRepository";
+import { incidentRepo } from "../repositories/incidentRepository.js";
 
 export const addIncidentService = async (incidentData) => {
   try {
