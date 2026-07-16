@@ -1,6 +1,14 @@
-import { createIncident } from "../controllers/incidentController.js";
+import {
+  createIncident,
+  updateIncident,
+  getIncident,
+} from "../controllers/incidentController.js";
 import express from "express";
 
-const router = express.router();
+const router = express.Router();
 
-router.post("/incidents", createIncident);
+router.post("/", createIncident);
+router.patch("/:id/status", updateIncident);
+router.get("/open", getIncident);
+
+export default router;
