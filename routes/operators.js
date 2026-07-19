@@ -3,6 +3,6 @@ import { createOperator } from "../controllers/operatorController.js";
 
 const router = express.Router();
 
-router.post("/operators", createOperator);
+router.post("/", createOperator);
 
 export default router;

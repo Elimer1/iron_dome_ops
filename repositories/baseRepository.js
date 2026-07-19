@@ -1,4 +1,4 @@
-import { pool } from "../db/databse";
+import { pool } from "../db/databasee";
 
 export function createRepository(tableName) {
   return {
