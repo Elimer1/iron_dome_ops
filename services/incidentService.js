@@ -21,18 +21,32 @@ export const addIncidentService = async (incidentData) => {
 
 export const updateIncidentService = async (incidentData, incidentId) => {
   try {
-    const [result] = await incidentRepo.update(incidentData, incidentId);
+    const oldIncident = await incidentRepo.get({ id: incidentId });
+    if (!oldIncident || !oldIncident.length) {
+      const error = new Error("Incident not found");
+      error.statusCode = 404;
+      throw error;
+    }
+    const oldOpId = oldIncident[0].operator_id;
 
+    const validStatuses = ["open", "in-progress", "closed"];
+    if (incidentData.status && !validStatuses.includes(incidentData.status)) {
+      const error = new Error("invalid status provided");
+      error.statusCode = 404;
+      throw error;
+    }
+
+    const result = await incidentRepo.update(incidentData, incidentId);
     await logsRepo.create({
       action: "INCIDENT_UPDATED",
       incident_id: incidentId,
-      operator_id: incidentData.operator_id,
+      operator_id: oldOpId,
       description: "INCIDENT UPDATED",
     });
 
     return result;
   } catch (error) {
-    throw new Error("Service error:" + error.message);
+    throw error;
   }
 };
 

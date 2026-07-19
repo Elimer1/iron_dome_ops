@@ -1,4 +1,4 @@
-import { operatorRepo } from "../repositories/operatorRepository";
+import { operatorRepo } from "../repositories/operatorRepository.js";
 
 export const addOperatorService = async (operatorData) => {
   try {

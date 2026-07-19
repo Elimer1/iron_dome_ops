@@ -4,7 +4,7 @@ services:
     container_name: iron-dome-db
     restart: always
     volumes:
-      - /mysql-data:/var/lib/mysql
+      - ./mysql-data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: iron_dome

@@ -5,7 +5,7 @@ USE iron_dome;
 CREATE TABLE if NOT EXISTS operators(
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
-    rank VARCHAR(100)
+    soldier_rank VARCHAR(100)
 );
 
 

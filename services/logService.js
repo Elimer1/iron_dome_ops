@@ -1,4 +1,4 @@
-import { logsRepo } from "../repositories/logsRepository";
+import { logsRepo } from "../repositories/logsRepository.js";
 
 export const addLogService = async (logData) => {
   try {

@@ -1,4 +1,4 @@
-import { pool } from "../db/databasee";
+import pool from "../db/database.js";
 
 export function createRepository(tableName) {
   return {
@@ -6,6 +6,7 @@ export function createRepository(tableName) {
       const keys = Object.keys(data).join(", ");
       const values = Object.values(data);
       const valueQuery = values.map((value) => "?").join(", ");
+      console.log("Data received in repository:", data);
       const [results] = await pool.execute(
         `INSERT INTO ${tableName} (${keys}) VALUES (${valueQuery})`,
         values,
